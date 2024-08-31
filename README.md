@@ -19,24 +19,24 @@ se está quedandos sin agua, sin cafe o sin leche. Al terminar se encenderá un 
 
 
 En cada paso se indicará mediante el puerto serie el estado del proceso:
--Calentando el agua
--Vertiendo café
--Vertiendo agua
--Vertiendo leche (en caso de cortado o con leche)
--Café listo
+- Calentando el agua
+- Vertiendo café
+- Vertiendo agua
+- Vertiendo leche (en caso de cortado o con leche)
+- Café listo
 
 **Plataforma de desarrollo**: NUCLEO-F429ZI
 
 **Periféricos a utilizar**:
 
--USER BUTTONS(3): Al presionar se elegirá que café preparar, entre café negro, café cortado o café con leche
--USER BUTTON: Al presionar se cancela el proceso
--ANALOG IN 1: Se utiliza para leer el peso al apoyar una taza
--ANALOG IN 2: Se utiliza para leer el peso del recipiente que contiene el cafe a utilizar
--ANALOG IN 3: Se utiliza para leer el peso de la cantidad de cafe en el filtro
--ANALOG IN 4: Se utiliza para leer el peso de la cantidad de agua en el recipiente
--ANALOG IN 5: Se utiliza para leer el peso de la cantidad de leche en el recipiente
--ANALOG IN 6: Se utiliza para leer la temperatura del agua
--UART: Se utiliza para enviar información de estado del sistema a la PC
--LED1: Se utiliza para indicar que el café está listo
--LED2: Se utiliza para indicar que el sistema cancelo el proceso anterior
+- USER BUTTONS(3): Al presionar se elegirá que café preparar, entre café negro, café cortado o café con leche
+- USER BUTTON: Al presionar se cancela el proceso
+- ANALOG IN 1: Se utiliza para leer el peso al apoyar una taza
+- ANALOG IN 2: Se utiliza para leer el peso del recipiente que contiene el cafe a utilizar
+- ANALOG IN 3: Se utiliza para leer el peso de la cantidad de cafe en el filtro
+- ANALOG IN 4: Se utiliza para leer el peso de la cantidad de agua en el recipiente
+- ANALOG IN 5: Se utiliza para leer el peso de la cantidad de leche en el recipiente
+- ANALOG IN 6: Se utiliza para leer la temperatura del agua
+- UART: Se utiliza para enviar información de estado del sistema a la PC
+- LED1: Se utiliza para indicar que el café está listo
+- LED2: Se utiliza para indicar que el sistema cancelo el proceso anterior
