@@ -1,4 +1,4 @@
-#Trabajo Prática N1 - Idea Proyecto
+# Trabajo Prática N1 - Idea Proyecto
 
 
 **Título**: Cafetera automática
