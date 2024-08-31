@@ -3,7 +3,7 @@
 
 **Título**: Cafetera automática
 
-**Alumno**: Romero Espinoza Alexis
+**Alumno**: Romero Espinoza, Alexis
 
 **Objetivo**: Desarrollar un sistema que me permite hacer un café de manera rápida y de calidad
 
