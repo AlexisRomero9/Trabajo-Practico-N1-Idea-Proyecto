@@ -11,7 +11,7 @@
 
 
 La propuesta del primer proyecto es el diseño de una cafetera automática, que al iniciar mostrará un menú para la elección del café, y una vez elegido, las etapas de la preparación del café elegido se mostrarán por pantalla.
-Durante el proceso de hacer el cafe, se cuenta con unsensor para pesar el café que se vierte sobre el filtro, un sensor de temperatura para el agua. Por otra parte,  Al terminar se encenderá un LED indicando que terminó de hacer el café.
+Durante el proceso de hacer el cafe, se cuenta con un sensor para pesar el café que se vierte sobre el filtro, un sensor de temperatura para el agua. Al terminar se encenderá un LED indicando que terminó de hacer el café.
  Por último en caso de querer cancelar el café, esta opción se implementará mediante un botón e iluminará otro LED, y al presionar nuevamente este boton se vuelve a empezar.
 
 Al iniciar, se deberá ingresar por teclado la opción a elegir:
