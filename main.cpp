@@ -3,11 +3,6 @@
 #include "arm_book_lib.h"
 
 //====================[Declaración de constantes utilizadas]====================
-#define COFFEE_WATER_POURING_TIME 1000 //Tiempo que se debe verter el agua en el café simple (prueba, no es tiempo real)
-#define CORTADO_WATER_POURING_TIME 800 //Tiempo que se debe verter el agua en el café cortado (prueba, no es tiempo real)
-#define MILK_POURING_TIME 200 //Tiempo que se debe verter la leche en el café cortado
-#define COFFEE '1'
-#define CORTADO '2'
 #define POTENTIOMETER_TEMP_READY 0.7 // El valor de la entrada analógica que debe alcanzar para considerar el agua hirviendo
                                      // el valor dado es aleatorio, fue dado como prueba, esto debe ser pasado a grados cuando
                                      //se utilice el sensor de temperatura.
@@ -27,7 +22,7 @@ DigitalOut cancelledCoffee(LED1); //Led que se enciende cuando el café fue canc
 void showMenu(char *receivedOption);
     /*
         Muestra el menú mediante comunicación serial, donde se mostrarán las opciones de café disponibles,
-        mientras no se ingrese una opción correcta, se seguirá mostrando el menú
+        mientras no se ingrese una opción correcta, se seguirá mostrando el menú.
     */
 
 void prepareIngredients();
@@ -42,7 +37,7 @@ void prepareIngredients();
 
 void prepareOption(char receivedOption);
     /*
-        Se invoca a la función correspondiente a la opción ingresada
+        Se invoca a la función correspondiente a la opción ingresada.
     */
 
 
@@ -74,6 +69,16 @@ typedef enum{
     READY
 }coffeeStates;
 
+typedef enum{
+    COFFEE_WATER_POURING_TIME = 1000, //Tiempo que se debe verter el agua en el café simple (prueba, no es tiempo real)
+    CORTADO_WATER_POURING_TIME 800, //Tiempo que se debe verter el agua en el café cortado (prueba, no es tiempo real)
+    MILK_POURING_TIME 200 //Tiempo que se debe verter la leche en el café cortado
+}timesForPreparation;
+
+typedef enum{
+    COFFEE,
+    CORTADO
+}coffeeOptions;
 
 
 int main()
@@ -126,6 +131,9 @@ void showMenu(char *receivedOption)
             }
             else{
                 uartUsb.write("La opcion ingresada es incorrecta, vuelve a intentar\r\n",56);
+                uartUsb.write("Las opciones correctas son:\n",33);
+                uartUsb.write( "1-Cafe\r\n",8);
+                uartUsb.write( "2-Cortado\r\n",11);
                 uartUsb.write( "Ingrese el numero: \r\n",20);
             }
         }
