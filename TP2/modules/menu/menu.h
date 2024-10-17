@@ -41,13 +41,4 @@ optionState_t enterOption(coffeeOption_t *receivedOption);
     Utilizando comunicación serial, se ingresa la opción de café a preparar
 */
 
-
-
-
-
-
-
-
-
-
 #endif

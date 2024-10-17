@@ -6,7 +6,7 @@
 
 typedef enum{
     COFFEE = 1,
-    CORTADO
+    CORTADO = 2
 }coffeeOption_t;
 
 //====================[Declaración de funciones privadas]====================

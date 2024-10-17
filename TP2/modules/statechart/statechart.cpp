@@ -5,6 +5,8 @@
 #include "modules/cupDetection/cupDetector.h"
 
 
+#define CANCELLED_WAITING_TIME 2000000
+
 volatile coffeeStates_t coffeeState;            //Determina el estado actual de la maquina de estados
 static InterruptIn cancelButton(BUTTON1);       //Botón utilizado para cancelar la preparación
 
@@ -101,7 +103,7 @@ void coffeeMachineWorking()
         case CANCELLED:
         {
             showMenu(COFFEE_CANCELLED,PREPARING_COFFEE);
-            wait_us(2000000); //Muestro un tiempo que el cafe fue cancelado, y espero a que se presione el botón nuevamente
+            wait_us(CANCELLED_WAITING_TIME); //Muestro un tiempo que el cafe fue cancelado, y espero a que se presione el botón nuevamente
             break;
         }
     }

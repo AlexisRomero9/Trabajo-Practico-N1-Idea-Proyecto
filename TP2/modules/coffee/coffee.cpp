@@ -5,8 +5,8 @@
 
 
 //====================[Declaración de constantes utilizadas]====================
-#define BOILING_WATER_TEMPERATURE 100  //Temperatura de hervor del agua                                       
-#define FULL_FILTER 25                 //Peso que debe tener el filtro para que se considere lleno
+#define BOILING_WATER_TEMPERATURE 100  //Temperatura de hervor del agua en °C                                    
+#define FULL_FILTER 25                 //Peso en gramos que debe tener el filtro para que se considere lleno
 #define FINAL_PREPARATION_TIME 500     //Tiempo de preparación total que va a tener el proceso de preparado de la opción ingresada
 
 
