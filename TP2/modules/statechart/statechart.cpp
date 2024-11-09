@@ -17,6 +17,7 @@ void initCoffeeMachine()
     cancelButton.fall(&cancelProcess);
     initDetector(); 
     initLoadCell(); 
+    initPreparationModule();
 }
 
 void coffeeMachineWorking()
