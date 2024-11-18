@@ -58,12 +58,12 @@ Otro detalle es el uso de comunicación serie para el ingreso de la opción, res
 
 https://drive.google.com/drive/folders/10vrW4IEvL2-kKUzHC8Ln_N-m4azOCo20?usp=drive_link
 
-###Desarrollo del código para TP3
+### Desarrollo del código para TP3
 
-Para la tercera parte de este trabajo práctico, se agregaron las funcionalidades para verter el cafe, el agua y la leche. Para verter el café molido, se simuló con un servomotor la apertura y cierre de la boquilla por la cual se vierte el café. Se configuro con una señal PWM para determinar el ángulo que debe moverse el servomotor en caso de abrir o cerrar la boquilla. En los casos de verter liquidos, se utilizarán unas mini bombas de agua de 5V, de las cuales dispongo pero hubo problemas en las pruebas por lo cual no se utilizaron en el video de demostración para evitar cualquier incoveniente con la placa o los otros dispositivos utilizados. Se utilizó un módulo de relés que servirá para brindarle la corriente necesaria al servomotor, las bombas y el calentador de agua en caso de implementarlo en una futura entrega.
+Para la tercera parte de este trabajo práctico se agregaron las funcionalidades para verter el cafe, el agua y la leche. Para verter el café molido, se simuló con un servomotor la apertura y cierre de la boquilla por la cual se vierte el café. Se configuró con una señal PWM para determinar el ángulo que debe moverse el servomotor en caso de abrir o cerrar la boquilla. En los casos de verter liquidos, se utilizarán unas mini bombas de agua de 5 V, de las cuales dispongo pero hubo problemas en las pruebas por lo cual no se utilizaron en el video de demostración para evitar cualquier incoveniente con la placa o los otros dispositivos utilizados. Se utilizó un módulo de relés que servirá para brindarle la corriente necesaria al servomotor, las bombas y el calentador de agua en caso de implementarlo en una futura entrega.
 El tiempo que debe verter cada liquido se mide utilizando la clase Ticker, que permite ejecutar una función dada una vez que se cumpla determinado tiempo, esto nos evita utilizar delays bloqueantes y poder continuar con la ejecución del programa principal. Una vez cumplido el tiempo, se ejecuta la función, en este caso se apagan las bombas.
 
-###Video demostración del TP3
+### Video demostración del TP3
 
 Se encuentra en el mismo link que el video demostración del TP2
 
