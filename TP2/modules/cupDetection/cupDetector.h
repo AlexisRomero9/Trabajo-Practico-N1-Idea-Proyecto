@@ -5,8 +5,8 @@
 #include "arm_book_lib.h"
 
 
-#define CUP_DETECTOR_TRIGGER_PIN A2 //PC_1
-#define CUP_DETECTOR_ECHO_PIN A3   //PC_0
+#define CUP_DETECTOR_TRIGGER_PIN A1 //PC_1
+#define CUP_DETECTOR_ECHO_PIN A2   //PC_0
 
 
 //====================[Declaración de funciones privadas]====================

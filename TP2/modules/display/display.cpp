@@ -77,16 +77,6 @@ typedef struct{
 
 //=====[Declaration and initialization of public global objects]===============
 
-DigitalOut displayD0( D0 );
-DigitalOut displayD1( D1 );
-DigitalOut displayD2( D2 );
-DigitalOut displayD3( D3 );
-DigitalOut displayD4( D4 );
-DigitalOut displayD5( D5 );
-DigitalOut displayD6( D6 );
-DigitalOut displayD7( D7 );
-DigitalOut displayRs( D8 );
-DigitalOut displayEn( D9 );
 
 I2C i2cPcf8574( I2C1_SDA, I2C1_SCL ); 
 
@@ -138,33 +128,19 @@ void displayInit( displayConnection_t connection )
                       DISPLAY_IR_FUNCTION_SET_8BITS );
     delay( 1 );  
 
-    switch( display.connection ) {
-        case DISPLAY_CONNECTION_GPIO_8BITS:
-            displayCodeWrite( DISPLAY_RS_INSTRUCTION, 
-                              DISPLAY_IR_FUNCTION_SET | 
-                              DISPLAY_IR_FUNCTION_SET_8BITS | 
-                              DISPLAY_IR_FUNCTION_SET_2LINES |
-                              DISPLAY_IR_FUNCTION_SET_5x8DOTS );
-            delay( 1 );         
-        break;
-        
-        case DISPLAY_CONNECTION_GPIO_4BITS:
-        case DISPLAY_CONNECTION_I2C_PCF8574_IO_EXPANDER:
-            displayCodeWrite( DISPLAY_RS_INSTRUCTION, 
-                              DISPLAY_IR_FUNCTION_SET | 
-                              DISPLAY_IR_FUNCTION_SET_4BITS );
-            delay( 1 );  
+   displayCodeWrite( DISPLAY_RS_INSTRUCTION, 
+                    DISPLAY_IR_FUNCTION_SET | 
+                    DISPLAY_IR_FUNCTION_SET_4BITS );
+    delay( 1 );  
 
-            initial8BitCommunicationIsCompleted = true;  
+    initial8BitCommunicationIsCompleted = true;  
 
-            displayCodeWrite( DISPLAY_RS_INSTRUCTION, 
-                              DISPLAY_IR_FUNCTION_SET | 
-                              DISPLAY_IR_FUNCTION_SET_4BITS | 
-                              DISPLAY_IR_FUNCTION_SET_2LINES |
-                              DISPLAY_IR_FUNCTION_SET_5x8DOTS );
-            delay( 1 );                                      
-        break;
-    }
+    displayCodeWrite( DISPLAY_RS_INSTRUCTION, 
+                        DISPLAY_IR_FUNCTION_SET | 
+                        DISPLAY_IR_FUNCTION_SET_4BITS | 
+                        DISPLAY_IR_FUNCTION_SET_2LINES |
+                        DISPLAY_IR_FUNCTION_SET_5x8DOTS );
+    delay( 1 );
 
     displayCodeWrite( DISPLAY_RS_INSTRUCTION, 
                       DISPLAY_IR_DISPLAY_CONTROL |
@@ -249,74 +225,42 @@ static void displayCodeWrite( bool type, uint8_t dataBus )
 
 static void displayPinWrite( uint8_t pinName, int value )
 {
-    switch( display.connection ) {
-        case DISPLAY_CONNECTION_GPIO_8BITS:
-            switch( pinName ) {
-                case DISPLAY_PIN_D0: displayD0 = value;   break;
-                case DISPLAY_PIN_D1: displayD1 = value;   break;
-                case DISPLAY_PIN_D2: displayD2 = value;   break;
-                case DISPLAY_PIN_D3: displayD3 = value;   break;
-                case DISPLAY_PIN_D4: displayD4 = value;   break;
-                case DISPLAY_PIN_D5: displayD5 = value;   break;
-                case DISPLAY_PIN_D6: displayD6 = value;   break;
-                case DISPLAY_PIN_D7: displayD7 = value;   break;
-                case DISPLAY_PIN_RS: displayRs = value;   break;
-                case DISPLAY_PIN_EN: displayEn = value;   break;
-                case DISPLAY_PIN_RW: break; 
-                default: break;
-            }
-            break;
-        case DISPLAY_CONNECTION_GPIO_4BITS:
-            switch( pinName ) {
-                case DISPLAY_PIN_D4: displayD4 = value;   break;
-                case DISPLAY_PIN_D5: displayD5 = value;   break;
-                case DISPLAY_PIN_D6: displayD6 = value;   break;
-                case DISPLAY_PIN_D7: displayD7 = value;   break;
-                case DISPLAY_PIN_RS: displayRs = value;   break;
-                case DISPLAY_PIN_EN: displayEn = value;   break;
-                case DISPLAY_PIN_RW: break; 
-                default: break;
-            }
-            break;
-        case DISPLAY_CONNECTION_I2C_PCF8574_IO_EXPANDER:
-            if ( value ) {
-                switch( pinName ) {
-                    case DISPLAY_PIN_D4: pcf8574.displayPinD4 = ON; break;
-                    case DISPLAY_PIN_D5: pcf8574.displayPinD5 = ON; break;
-                    case DISPLAY_PIN_D6: pcf8574.displayPinD6 = ON; break;
-                    case DISPLAY_PIN_D7: pcf8574.displayPinD7 = ON; break;
-                    case DISPLAY_PIN_RS: pcf8574.displayPinRs = ON; break;
-                    case DISPLAY_PIN_EN: pcf8574.displayPinEn = ON; break;
-                    case DISPLAY_PIN_RW: pcf8574.displayPinRw = ON; break;
-                    case DISPLAY_PIN_A_PCF8574: pcf8574.displayPinA = ON; break;
-                    default: break;
-                }
-            }
-            else {
-                switch( pinName ) {
-                    case DISPLAY_PIN_D4: pcf8574.displayPinD4 = OFF; break;
-                    case DISPLAY_PIN_D5: pcf8574.displayPinD5 = OFF; break;
-                    case DISPLAY_PIN_D6: pcf8574.displayPinD6 = OFF; break;
-                    case DISPLAY_PIN_D7: pcf8574.displayPinD7 = OFF; break;
-                    case DISPLAY_PIN_RS: pcf8574.displayPinRs = OFF; break;
-                    case DISPLAY_PIN_EN: pcf8574.displayPinEn = OFF; break;
-                    case DISPLAY_PIN_RW: pcf8574.displayPinRw = OFF; break;
-                    case DISPLAY_PIN_A_PCF8574: pcf8574.displayPinA = OFF; break;
-                    default: break;
-                }
-            }     
-            pcf8574.data = 0b00000000;
-            if ( pcf8574.displayPinRs ) pcf8574.data |= 0b00000001; 
-            if ( pcf8574.displayPinRw ) pcf8574.data |= 0b00000010; 
-            if ( pcf8574.displayPinEn ) pcf8574.data |= 0b00000100; 
-            if ( pcf8574.displayPinA  ) pcf8574.data |= 0b00001000; 
-            if ( pcf8574.displayPinD4 ) pcf8574.data |= 0b00010000; 
-            if ( pcf8574.displayPinD5 ) pcf8574.data |= 0b00100000; 
-            if ( pcf8574.displayPinD6 ) pcf8574.data |= 0b01000000; 
-            if ( pcf8574.displayPinD7 ) pcf8574.data |= 0b10000000; 
-            i2cPcf8574.write( pcf8574.address, &pcf8574.data, 1);
-            break;    
+    if ( value ) {
+        switch( pinName ) {
+            case DISPLAY_PIN_D4: pcf8574.displayPinD4 = ON; break;
+            case DISPLAY_PIN_D5: pcf8574.displayPinD5 = ON; break;
+            case DISPLAY_PIN_D6: pcf8574.displayPinD6 = ON; break;
+            case DISPLAY_PIN_D7: pcf8574.displayPinD7 = ON; break;
+            case DISPLAY_PIN_RS: pcf8574.displayPinRs = ON; break;
+            case DISPLAY_PIN_EN: pcf8574.displayPinEn = ON; break;
+            case DISPLAY_PIN_RW: pcf8574.displayPinRw = ON; break;
+            case DISPLAY_PIN_A_PCF8574: pcf8574.displayPinA = ON; break;
+            default: break;
+        }
     }
+    else {
+        switch( pinName ) {
+            case DISPLAY_PIN_D4: pcf8574.displayPinD4 = OFF; break;
+            case DISPLAY_PIN_D5: pcf8574.displayPinD5 = OFF; break;
+            case DISPLAY_PIN_D6: pcf8574.displayPinD6 = OFF; break;
+            case DISPLAY_PIN_D7: pcf8574.displayPinD7 = OFF; break;
+            case DISPLAY_PIN_RS: pcf8574.displayPinRs = OFF; break;
+            case DISPLAY_PIN_EN: pcf8574.displayPinEn = OFF; break;
+            case DISPLAY_PIN_RW: pcf8574.displayPinRw = OFF; break;
+            case DISPLAY_PIN_A_PCF8574: pcf8574.displayPinA = OFF; break;
+            default: break;
+        }
+    }     
+    pcf8574.data = 0b00000000;
+    if ( pcf8574.displayPinRs ) pcf8574.data |= 0b00000001; 
+    if ( pcf8574.displayPinRw ) pcf8574.data |= 0b00000010; 
+    if ( pcf8574.displayPinEn ) pcf8574.data |= 0b00000100; 
+    if ( pcf8574.displayPinA  ) pcf8574.data |= 0b00001000; 
+    if ( pcf8574.displayPinD4 ) pcf8574.data |= 0b00010000; 
+    if ( pcf8574.displayPinD5 ) pcf8574.data |= 0b00100000; 
+    if ( pcf8574.displayPinD6 ) pcf8574.data |= 0b01000000; 
+    if ( pcf8574.displayPinD7 ) pcf8574.data |= 0b10000000; 
+    i2cPcf8574.write( pcf8574.address, &pcf8574.data, 1); 
 }
 
 static void displayDataBusWrite( uint8_t dataBus )
@@ -326,28 +270,16 @@ static void displayDataBusWrite( uint8_t dataBus )
     displayPinWrite( DISPLAY_PIN_D6, dataBus & 0b01000000 );
     displayPinWrite( DISPLAY_PIN_D5, dataBus & 0b00100000 );
     displayPinWrite( DISPLAY_PIN_D4, dataBus & 0b00010000 );
-    switch( display.connection ) {
-        case DISPLAY_CONNECTION_GPIO_8BITS:
-            displayPinWrite( DISPLAY_PIN_D3, dataBus & 0b00001000 );
-            displayPinWrite( DISPLAY_PIN_D2, dataBus & 0b00000100 );  
-            displayPinWrite( DISPLAY_PIN_D1, dataBus & 0b00000010 );      
-            displayPinWrite( DISPLAY_PIN_D0, dataBus & 0b00000001 );
-        break; 
-              
-        case DISPLAY_CONNECTION_GPIO_4BITS:
-        case DISPLAY_CONNECTION_I2C_PCF8574_IO_EXPANDER:
-            if ( initial8BitCommunicationIsCompleted == true) {
-                displayPinWrite( DISPLAY_PIN_EN, ON );         
-                delay( 1 );
-                displayPinWrite( DISPLAY_PIN_EN, OFF );              
-                delay( 1 );        
-                displayPinWrite( DISPLAY_PIN_D7, dataBus & 0b00001000 );
-                displayPinWrite( DISPLAY_PIN_D6, dataBus & 0b00000100 );  
-                displayPinWrite( DISPLAY_PIN_D5, dataBus & 0b00000010 );      
-                displayPinWrite( DISPLAY_PIN_D4, dataBus & 0b00000001 );                
-            }
-        break;
     
+    if ( initial8BitCommunicationIsCompleted == true) {
+        displayPinWrite( DISPLAY_PIN_EN, ON );         
+        delay( 1 );
+        displayPinWrite( DISPLAY_PIN_EN, OFF );              
+        delay( 1 );        
+        displayPinWrite( DISPLAY_PIN_D7, dataBus & 0b00001000 );
+        displayPinWrite( DISPLAY_PIN_D6, dataBus & 0b00000100 );  
+        displayPinWrite( DISPLAY_PIN_D5, dataBus & 0b00000010 );      
+        displayPinWrite( DISPLAY_PIN_D4, dataBus & 0b00000001 );                
     }
     displayPinWrite( DISPLAY_PIN_EN, ON );              
     delay( 1 );
