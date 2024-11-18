@@ -1,4 +1,4 @@
-# Trabajo Prática N°2 - Idea Proyecto
+# Trabajo Práctico Sistemas Embebidos
 
 
 **Título**: Cafetera automática
