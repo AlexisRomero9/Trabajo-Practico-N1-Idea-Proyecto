@@ -13,9 +13,9 @@ Para la elección del proyecto se buscó desarrollar proyectos los cuales cuente
 
  En principio se discutió la implementación de dos proyectos, la cafetera automática, y un sistema inteligente de iluminación de exteriores, analizando los siguientes aspectos:
 
-- Tiempo de implementación: Dado que fue un proyecto que se desarrolla durante la cursada, el tiempo de implementación es de 4 meses como máximo, por lo tanto se asignan puntajes altos a proyectos más cortos que puedan cubrir el tiempo estipulado.
-- Disponibilidad del hardware: Teniendo en cuenta que los módulos que se utilizan en cada proyecto son módulos relativamente comunes en el mercado, se asigna un puntaje mayor por la cantidad de módulos que necesita cada proyecto
-- Utilidad del proyecto: Se analiza la utilidad a nivel del aprendizaje obtenido durante el desarrollo del proyecto, el proyecto elegido debe contar en su mayoría con módulos vistos durante el curso.
+- Tiempo de implementación: dado que fue un proyecto que se desarrolla durante la cursada, el tiempo de implementación es de 4 meses como máximo, por lo tanto se asignan puntajes altos a proyectos más cortos que puedan cubrir el tiempo estipulado.
+- Disponibilidad del hardware: teniendo en cuenta que los módulos que se utilizan en cada proyecto son módulos relativamente comunes en el mercado, se asigna un puntaje mayor por la cantidad de módulos que necesita cada proyecto
+- Utilidad del proyecto: se analiza la utilidad a nivel del aprendizaje obtenido durante el desarrollo del proyecto, el proyecto elegido debe contar en su mayoría con módulos vistos durante el curso.
 
 
 <table>
@@ -58,13 +58,11 @@ Para la elección del proyecto se buscó desarrollar proyectos los cuales cuente
 </tr>
 </table>
 
-- Sistema de iluminación de exteriores: Se le asignó un puntaje de 6 en tiempo de implementación dados los sensores y utilidades que este sistema tiene generalmente, el proyecto puede no ser tan extenso para cubrir el tiempo de cursada. En cuanto a disponibilidad del hardware, los módulos a utilizar son muy comun y fácil de conseguir, y por último la utilidad del proyecto se le asignó un puntaje de 6 dado que los módulos a utilizar no son tan variados como se buscaba con el proyecto desde un principio.
+- Sistema de iluminación de exteriores: se le asignó un puntaje de 6 en tiempo de implementación dados los sensores y utilidades que este sistema tiene generalmente, el proyecto puede no ser tan extenso para cubrir el tiempo de cursada. En cuanto a disponibilidad del hardware, los módulos a utilizar son muy comunes y fáciles de conseguir, y por último la utilidad del proyecto se le asignó un puntaje de 6 dado que los módulos a utilizar no son tan variados como se buscaba con el proyecto desde un principio.
 
-- Cafetera automática: En el tiempo de implementación se le asigno un valor de 8 ya que se busca que la cafetera cuenta con gran variedad de funcionalidades utilizando diferentes módulos, lo cual requerirá un tiempo mayor para el desarrollo y pruebas de cada módulo individual. Los módulos a utilizar son fáciles de obtener en el mercado, por eso se le asignó un valor alto a la disponiblidad de hardware, y por último en utilidad del proyecto se asignó un puntaje de 8 dado que cumple con el objetivo principal que se buscaba para el desarrollo del proyecto.
+- Cafetera automática: en el tiempo de implementación se le asigno un valor de 8 ya que se busca que la cafetera cuenta con gran variedad de funcionalidades utilizando diferentes módulos, lo cual requerirá un tiempo mayor para el desarrollo y pruebas de cada módulo individual. Los módulos a utilizar son fáciles de obtener en el mercado, por eso se le asignó un valor alto a la disponiblidad de hardware, y por último en utilidad del proyecto se asignó un puntaje de 8 dado que cumple con el objetivo principal que se buscaba para el desarrollo del proyecto.
 
 ### 2.1 - Propósito del proyecto
-
-El propósito del proyecto es diseñar una cafetera automática, que cuente con dos opciones de café, seleccionables a través del celular, y que permita configurar una hora para la preparación del café.
 
 El propósito del proyecto es diseñar una cafetera automática que ofrezca en principio la posibilidad de preparar dos opciones de café, las cuales podrán ser seleccionadas a través de una aplicación, permitiendo al usuario controlar la preparación de forma remota. Además, el sistema incluirá la funcionalidad de programar la preparación para una hora específica.
 
@@ -94,10 +92,13 @@ Se analizan tres opciones de cafeteras automáticas presentes en el mercado que 
 |Jarra de café|Si|No|No|
 |Filtro extraible|Sí|Sí|Sí|
 |Deposito de café|No|No|Sí|
-|Depósito de agua|1.5L|1.2L|1.7L|
+|Depósito de agua|1,5|1,2|1,7|
 |Depósito de leche|No|No|Sí|
 |Mantiene caliente el café| Sí| Sí| Sí|
 |Molinillo|No|No|Sí|
+|Precio|74,63|66,49|539,19|
+
+Nota: Los precios se muestran en euros dado que no todas las cafeteras están disponibles en el país
 
 
 Los resultados del análisis muestran que los productos presentes en el mercado cuentan con características que incluimos en nuetro proyecto, como es una pantalla, y la aplicación celular, pero también se pueden destacar otras funcionalidades como el molinillo y que se mantenga el café caliente, que son caracteristicas muy útiles en este tipo de productos, las cuales no se implementarán debido al tiempo designado y el diseño de la mecánica que requerirían estas funcionalidades está fuera de los contenidos de la materia y complejizaría el proyecto.
@@ -115,22 +116,31 @@ En la siguiente tabla se muestran los requerimientos del proyecto
 
   </tr>
   <tr>
-    <td rowspan="4">NUCLEO-F103RB</td>
+    <td rowspan="6">Firmware</td>
     <td style="text-align: center;">1.1</td> 
     <td style="text-align: center;">Implementación de maquinas de estado</td>
     
   </tr>
   <tr>
     <td style="text-align: center;">1.2</td>
-    <td style="text-align: center;">Generación de señal para servomotor</td> 
+    <td style="text-align: center;">Generación de señal para mover el servomotor</td> 
   </tr>
   <tr>
     <td style="text-align: center;">1.3</td>
-    <td style="text-align: center;">Comunicación con módulo Wi-Fi</td> 
+    <td style="text-align: center;">Comunicación con módulo Wi-Fi mediante UART</td> 
   </tr>
+  
   <tr>
     <td style="text-align: center;">1.4</td>
     <td style="text-align: center;">Procesamiento de datos de los sensores</td> 
+  </tr>
+  <tr>
+    <td style="text-align: center;">1.5</td>
+    <td style="text-align: center;">Comunicación con display LCD mediante I2C</td>
+    <tr>
+    <td style="text-align: center;">1.6</td>
+    <td style="text-align: center;">Configuración de Tickers para la temporización de los procesos de preparación</td> 
+  </tr>
   </tr>
   <tr>
     <td rowspan="2">Alimentación</td>
@@ -144,12 +154,12 @@ En la siguiente tabla se muestran los requerimientos del proyecto
   <tr>
     <td rowspan="3">Sensores</td>
     <td style="text-align: center;">3.1</td> 
-    <td style="text-align: center;">Medición del peso del café con celda de carga</td>
+    <td style="text-align: center;">Medir el peso especificado de café para el filtro con celda de carga</td>
     
   </tr>
   <tr>
     <td style="text-align: center;">3.2</td>
-    <td style="text-align: center;">Medición de temperatura del agua</td> 
+    <td style="text-align: center;">Medir la temperatura de hervor del agua</td> 
   </tr>
   <tr>
     <td style="text-align: center;">3.3</td>
@@ -162,7 +172,7 @@ En la siguiente tabla se muestran los requerimientos del proyecto
   </tr>
   <tr>
     <td style="text-align: center;">4.2</td>
-    <td style="text-align: center;">Proveer corriente a servomotor</td> 
+    <td style="text-align: center;">Proveer corriente a servomotor de la boquilla de café</td> 
   </tr>
   <tr>
     <td style="text-align: center;">4.3</td>
@@ -182,7 +192,7 @@ En la siguiente tabla se muestran los requerimientos del proyecto
     <td style="text-align: center;">Notificar en caso de ingresar una opción incorrecta</td> 
   </tr>
   <tr>
-    <td style="text-align: center;">5.2</td>
+    <td style="text-align: center;">5.3</td>
     <td style="text-align: center;">Notificar que la taza no está en posición en caso de ingresar una opción</td> 
   </tr>
   <tr>
@@ -208,7 +218,7 @@ En la siguiente tabla se muestran los requerimientos del proyecto
     <td style="text-align: center;">7 de diciembre entrega de un breve video mostrando el Trabajo Final en funcionamiento</td> 
   </tr>
   <tr>
-    <td style="text-align: center;">6.3</td>
+    <td style="text-align: center;">7.3</td>
     <td style="text-align: center;">14 de diciembre entrega del Informe Final</td> 
   </tr>
 </table>
