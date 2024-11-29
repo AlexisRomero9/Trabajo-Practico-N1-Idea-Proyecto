@@ -92,11 +92,11 @@ Se analizan tres opciones de cafeteras automáticas presentes en el mercado que 
 |Jarra de café|Si|No|No|
 |Filtro extraible|Sí|Sí|Sí|
 |Deposito de café|No|No|Sí|
-|Depósito de agua|1,5|1,2|1,7|
+|Depósito de agua|1,5l|1,2l|1,7l|
 |Depósito de leche|No|No|Sí|
 |Mantiene caliente el café| Sí| Sí| Sí|
 |Molinillo|No|No|Sí|
-|Precio|74,63|66,49|539,19|
+|Precio|USD 74,63|USD 66,49|USD 539,19|
 
 Nota: Los precios se muestran en euros dado que no todas las cafeteras están disponibles en el país
 
@@ -123,7 +123,7 @@ En la siguiente tabla se muestran los requerimientos del proyecto
   </tr>
   <tr>
     <td style="text-align: center;">1.2</td>
-    <td style="text-align: center;">Generación de señal para mover el servomotor</td> 
+    <td style="text-align: center;">Generación de señal para mover el servomotor entre un ángulo de 0° a 45°</td> 
   </tr>
   <tr>
     <td style="text-align: center;">1.3</td>
@@ -154,12 +154,12 @@ En la siguiente tabla se muestran los requerimientos del proyecto
   <tr>
     <td rowspan="3">Sensores</td>
     <td style="text-align: center;">3.1</td> 
-    <td style="text-align: center;">Medir el peso especificado de café para el filtro con celda de carga</td>
+    <td style="text-align: center;">Medir el peso especificado de café para el filtro con celda de carga en un rango de 0 a 100 gramos con un error de 1.5 gramos</td>
     
   </tr>
   <tr>
     <td style="text-align: center;">3.2</td>
-    <td style="text-align: center;">Medir la temperatura de hervor del agua</td> 
+    <td style="text-align: center;">Medir la temperatura de hervor del agua en un rango de 0 a 150°C con un error de 0.75°C</td> 
   </tr>
   <tr>
     <td style="text-align: center;">3.3</td>
